@@ -1,0 +1,617 @@
+/* ================= FONTS ================= */
+@font-face {
+  font-family: 'Roxborough';
+  src: url('./fonts/roxborough-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roxborough';
+  src: url('./fonts/roxborough-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roxborough";
+  src: url("/fonts/Roxborough-RegularItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roxborough";
+  src: url("/fonts/Roxborough-ThinItalic.otf") format("opentype");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ================= BASE ================= */
+.blog-page-body,
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 10px;
+  font-weight: 400;
+  font-family: 'Roxborough', "Times New Roman", serif;
+  scroll-behavior: smooth;
+}
+
+body, p, li, label, input, textarea, button {
+  font-family: "Times New Roman", Georgia, serif;
+}
+
+h1, h2, h3, .brand {
+  font-family: 'Roxborough', "Times New Roman", serif;
+}
+.bold {
+  font-weight: 700;
+  letter-spacing: 0.06rem;
+}
+
+/* ================= BLOG PAGE ================= */
+.blog-page-body .blog-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-family: 'Roxborough', Georgia, serif;
+  color: #081b24;
+  background-color: #fefcf7;
+}
+
+/* ================= HEADER ================= */
+.blog-page-body #header {
+  width: 100%;
+  background-color: #081b24;
+  padding: 0;
+}
+
+.blog-page-body #header .header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.blog-page-body #header .brand-logo {
+  max-width: 180px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.blog-page-body #header .brand-logo img {
+  width: auto !important;
+  height: 40px !important;
+  max-width: 100%;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  object-fit: contain;
+  display: block;
+}
+
+/* Nav */
+.blog-page-body #header .nav-bar {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.blog-page-body #header .nav-list ul {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  position: static;      /* desktop default */
+  height: auto;
+  width: auto;
+  background: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  transition: none;
+}
+
+.blog-page-body #header .nav-list ul li a {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.15rem;
+  color: #fefcf7;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.blog-page-body #header .nav-list ul li a:hover {
+  opacity: 0.75;
+}
+
+/* Hamburger base */
+.blog-page-body #header .hamburger {
+  display: none; /* hidden on desktop */
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.blog-page-body .hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #fefcf7;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+.blog-page-body .hamburger.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.blog-page-body .hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.blog-page-body .hamburger.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ================= MOBILE ================= */
+@media screen and (max-width: 768px) {
+
+  /* Show hamburger */
+  .blog-page-body #header .hamburger {
+    display: block;
+  }
+
+  /* Mobile menu */
+  .blog-page-body #header .nav-list ul {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: #081b24;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    transition: right 0.3s ease;
+    z-index: 1000;
+  }
+
+  .blog-page-body #header .nav-list ul.active {
+    right: 0;
+  }
+
+  .blog-page-body #header .nav-list ul li a {
+    font-size: 2rem;
+  }
+}
+
+/* ================= BLOG HERO ================= */
+.blog-hero {
+  width: 100%;
+  height: 75vh;
+  min-height: 420px;
+  background-image: url("img/bloghero.jpg");
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-hero-overlay {
+  background: rgba(8, 27, 36, 0.55);
+  padding: 4rem 3rem;
+  text-align: center;
+  max-width: 900px;
+  border-radius: 12px;
+}
+
+.blog-hero-overlay h1 {
+  font-family: 'Roxborough', Georgia, serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: #fefcf7;
+  margin-bottom: 1rem;
+}
+
+.blog-hero-overlay p {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #fefcf7;
+}
+
+/* ================= BLOG CONTENT ================= */
+.blog-page-body .blog-container .blog-title {
+  font-size: 2.8rem;
+  color: #b0815c;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.blog-page-body .blog-container .blog-subtitle {
+  font-size: 1.6rem;
+  font-style: italic;
+  color: #081b24;
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.blog-page-body .blog-container h2 {
+  font-size: 2rem;
+  color: #081b24;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-left: 5px solid #b0815c;
+  padding-left: 1rem;
+  margin-left: 2rem;
+}
+
+.blog-page-body .blog-container p {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.8;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.blog-page-body .blog-container strong {
+  color: #52370f;
+}
+
+/* FULL-WIDTH SECTIONS */
+.blog-section {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 4rem 0;
+}
+
+.blog-section-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-light {
+  background-color: #EDE6DE;
+}
+
+.section-white {
+  background-color: #ffffff;
+}
+
+.section-dark {
+  background-color: #081b24;
+  color: #fefcf7;
+}
+
+.blog-page-body .section-dark,
+.blog-page-body .section-dark h2,
+.blog-page-body .section-dark h3,
+.blog-page-body .section-dark p {
+  color: #fefcf7 !important;
+}
+
+/* ================= BLOG PICS ================= */
+.blog-section-inner.side-by-side {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.text-column {
+  flex: 2;
+  min-width: 0;
+  font-size: 1rem;
+}
+
+.image-column {
+  flex: 1;
+  min-width: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.side-by-side-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: center;
+}
+
+/* ================= BLOG IMAGES (DESKTOP) ================= */
+.image-wrapper {
+  position: relative;
+  display: block;       /* change from inline-block to block */
+  width: 80%;           /* wrapper takes 60% of container on desktop */
+  margin: 1rem auto;    /* centers wrapper */
+}
+
+.image-wrapper img {
+  width: 100%;           /* fill wrapper width */
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  display: block;        /* ensures it fills wrapper correctly */
+  padding: 0.5rem;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.15);
+  border: 2px solid #b0815c;
+}
+
+/* Decorative corner accent */
+.image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border-top: 4px solid #b0815c;
+  border-left: 4px solid #b0815c;
+  border-radius: 8px 0 0 0;
+}
+
+/* ================= BLOG IMAGES (MOBILE) ================= */
+@media screen and (max-width: 768px) {
+
+  /* Stack side-by-side vertically */
+  .side-by-side-wrapper,
+  .blog-section-inner.side-by-side {
+    flex-direction: column !important;  /* stack items */
+    flex-wrap: wrap !important;
+  }
+
+  .text-column,
+  .image-column {
+    width: 100%;           /* take full width */
+    display: block;        /* stop flex alignment */
+  }
+
+  /* Optional: center images */
+  .image-wrapper {
+    width: 80%;           /* or whatever mobile size you want */
+    margin: 1rem auto;    /* centers the image */
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    display: block;
+    padding: 0.25rem;
+    border-radius: 12px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .image-wrapper::after {
+    width: 20px;
+    height: 20px;
+    border-top: 3px solid #b0815c;
+    border-left: 3px solid #b0815c;
+  }
+    .image-column {
+    order: 2; /* push image below text */
+  }
+
+  .text-column {
+    order: 1;
+  }
+}
+/* ================= FOOTER ================= */
+.site-footer {
+  background-color: #081b24;
+  color: #fdf6e3; 
+  font-family: 'Roxborough', serif;
+  font-size: 1rem; 
+  padding: 4rem 2rem 2rem 2rem;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  box-sizing: border-box;
+}
+.site-footer p,
+.site-footer h3,
+.site-footer a {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+  text-indent: 0 !important;
+}
+
+.site-footer *,
+.site-footer *::before,
+.site-footer *::after {
+  font-size: inherit !important;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Top part: left / center / right */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* LEFT COLUMN */
+.footer-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.footer-left h3,
+.footer-left p {
+  margin: 0;
+  line-height: 1.4;
+  max-width: 38ch;
+}
+
+/* CENTER COLUMN */
+.footer-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-center img {
+  height: 100px;
+  width: auto;
+  margin-bottom: 1rem;
+}
+
+.footer-center .mission {
+  max-width: 400px;
+  line-height: 1.6;
+  font-style: italic;
+  color: #f5f1e6;
+  font-size: 0.875rem;
+}
+
+/* RIGHT COLUMN */
+.footer-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  text-align: right;
+  align-items: flex-end;
+}
+
+.footer-right .contact-info {
+  margin-bottom: 0.5rem;
+}
+
+.footer-right a {
+  color: #f5f1e6;
+  text-decoration: none;
+}
+
+.footer-right .footer-social {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.footer-right .footer-social a {
+  display: inline-block;
+}
+
+.footer-right .footer-social img {
+  display: block;
+  height: 28px;
+}
+
+/* Bottom row */
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: #f5f1e6;
+}
+
+/* Mobile-only stacked logo + mission */
+.mobile-footer-center {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mobile-footer-center img {
+  max-width: 120px;
+  height: auto;
+}
+
+.mobile-footer-center .mission {
+  font-size: 0.85rem;
+  color: white;
+  max-width: 250px;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  /* Stack everything vertically */
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* centers all columns horizontally */
+    justify-content: center;
+    gap: 2rem;             /* space between sections */
+  }
+
+  /* Columns take full width but text is centered */
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    width: 100%;
+    max-width: 400px;      /* optional: keeps text readable */
+    text-align: center;     /* centers all text */
+    margin: 0 auto;        /* center block itself */
+    align-items: center;    /* center any flex children */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Land acknowledgment: shorter lines */
+  .footer-left p {
+    max-width: 38ch;
+    margin: 0 auto;
+  }
+
+  /* Right column: stack icons under contact info */
+  .footer-right .footer-social {
+    justify-content: center;  /* center icons */
+    margin-top: 0.5rem;
+  }
+
+  /* Center column logo + mission */
+    .footer-center img,
+  .mobile-footer-center img {
+    max-width: 120px;    /* limits width */
+    height: auto;        /* keeps natural aspect ratio */
+    object-fit: contain; /* prevents stretching */
+    display: block;      /* removes inline spacing */
+    margin: 0 auto;      /* centers the image */
+  }
+
+  .footer-center .mission {
+    max-width: 250px;
+    font-size: 0.85rem;
+  }
+
+  /* Adjust bottom row */
+  .footer-bottom p {
+    text-align: center;
+    margin-top: 1rem;
+  }
+}
+
