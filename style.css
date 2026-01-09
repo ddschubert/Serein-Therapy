@@ -447,8 +447,12 @@ p {
   margin: 0 auto;
   padding: clamp(4rem, 8vw, 8rem) 1.5rem;
 }
-
+#start-here h1 {
+  font-size: clamp(1.75rem, 2.8vw, 2rem);
+  margin-bottom: 1rem;
+}
 #start-here h2 {
+  font-family: 'Georgia';
   font-size: clamp(1.75rem, 2vw, 2rem);
   margin-bottom: 1rem;
 }
