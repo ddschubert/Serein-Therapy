@@ -198,7 +198,7 @@ h1, h2, h3, .brand {
   width: 100%;
   height: 75vh;
   min-height: 420px;
-  background-image: url("img/bloghero.jpg");
+  background-image: var(--hero-image);
   background-size: cover;
   background-position: center 40%;
   background-repeat: no-repeat;
@@ -266,7 +266,18 @@ h1, h2, h3, .brand {
 }
 
 .blog-page-body .blog-container strong {
-  color: #52370f;
+  color: #a35e2c;
+}
+.blog-page-body blockquote {
+  font-style: italic;
+  font-family: "Georgia";
+  background-color: #e6e2d3;
+  border-left: 5px solid #b0815c;
+  padding: 1rem 1.5rem;
+  margin: 2.5rem 0;
+  color: #081b24;
+  font-size: 1.75rem;
+  border-radius: 8px;
 }
 
 /* FULL-WIDTH SECTIONS */
@@ -412,6 +423,29 @@ h1, h2, h3, .brand {
   }
 }
 /* ================= FOOTER ================= */
+.site-footer {
+  position: relative;
+}
+
+/* Top divider */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 1000px;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(245, 241, 230, 0.4),
+    transparent
+  );
+}
+
+
 .site-footer {
   background-color: #081b24;
   color: #fdf6e3; 

@@ -3,68 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Story</title>
-  <link rel="stylesheet" href="mystory.css">
+  <title>Life with Marfan Syndrome</title>
+  <link rel="stylesheet" href="blog-styles.css">
 </head>
-<body>
-
+<body class="blog-page-body">
+ <!-- ================= HEADER ================= -->
 <header id="header">
   <div class="header">
+    
+    <!-- Brand / Logo -->
     <div class="brand-logo">
       <img src="./img/logoH.png" alt="Logo">
     </div>
+
+    <!-- Navigation -->
     <nav class="nav-bar">
       <div class="nav-list">
         <ul>
-          <li><a href="index.html#home">HOME</a></li>
-          <li><a href="index.html#about">ABOUT</a></li>
-          <li><a href="index.html#services">SERVICES</a></li>
-          <li><a href="index.html#blog">BLOG</a></li>
+          <li><a href="index.html#hero" data-after="Home">HOME</a></li>
+          <li><a href="index.html#services" data-after="Service">SERVICES</a></li>
+          <li><a href="index.html#about" data-after="About">ABOUT</a></li>
+          <li><a href="index.html#blog" data-after="Projects">BLOG</a></li>
           <li><a href="index.html#waitlist">JOIN WAITLIST</a></li>
         </ul>
       </div>
-      <div class="hamburger">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
+     <!-- Hamburger (mobile only) -->
+    <div class="hamburger">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
     </nav>
+
   </div>
 </header>
 
-<section class="mystory-hero" style="background-image: url('./img/me.jpg');">
-  <div class="mystory-hero-overlay">
+
+<!-- BLOG HERO -->
+<section class="blog-hero"
+   style="--hero-image: url('img/mystoryhero.png');">
+  <div class="blog-hero-overlay">
     <h1>My Story</h1>
-    <p>Living with Marfan syndrome, chronic illness, and advocating for disability support</p>
+    <p>A little more about me</p>
   </div>
 </section>
 
-<main class="mystory-page">
 
-  <!-- Section 1 -->
-  <section class="blog-section-inner side-by-side">
-    <div class="text-column">
-
+  <!-- BLOG CONTENT -->
+  <main class="blog-container">
+    <section class="blog-section section-light">
+    <div class="blog-section-inner">
       <p>Hi, I’m <strong>Doré.</strong> I’m a therapist, an advocate, and someone who lives within the realities of chronic illness and dynamic disability. These identities are not separate parts of my life; they inform one another constantly. They shape how I listen, how I understand pain and resilience, and how I show up in the therapeutic space.</p>
+      <p>
+    </div>
+  </section>
 
-      <h2>Living With Chronic Illness</h2>
-
-      <p>I live with <strong> Marfan syndrome</strong>, a genetic connective tissue disorder that affects multiple systems in the body, including the spine, eyes, and heart. Connective tissue acts like the body’s internal scaffolding, providing strength and stability. In Marfan syndrome, that scaffolding is fragile, which means the body requires more support, monitoring, and adaptation over time.</p>
+  <!-- Side-by-Side Text + Image Section -->
+  <section class="blog-section section-light">
+    <div class="side-by-side-wrapper">
+      <!-- Text -->
+      <div class="text-column">
+        <h2>Living With Chronic Illness</h2>
+         <p>I live with <strong> Marfan syndrome</strong>, a genetic connective tissue disorder that affects multiple systems in the body, including the spine, eyes, and heart. Connective tissue acts like the body’s internal scaffolding, providing strength and stability. In Marfan syndrome, that scaffolding is fragile, which means the body requires more support, monitoring, and adaptation over time.</p>
 
       <p>Living in a body that is unpredictable has profoundly shaped my relationship with myself and with the medical system. I have spent much of my life navigating appointments, imaging, surgeries, recoveries, and long stretches of uncertainty. I know what it is like to advocate for yourself when symptoms are dismissed, to wait for answers, and to live in the space between “you’re fine” and “something is very wrong.”</p>
 
       <p>If you would like to read more about my personal medical journey with Marfan syndrome, you can do so [here](insert link to your Marfan story).</p>
 
+      </div>
+
+      <!-- Image -->
+      <div class="image-column">
+        <div class="image-wrapper">
+  <img src="img/mystory1.jpg" alt="Illustration or photo" />
+</div>
+
+      </div>
     </div>
   </section>
 
- <section class="blog-section-inner side-by-side">
+<section class="blog-section section-white">
+  <div class="side-by-side-wrapper">
+    
+    <!-- Image on the left -->
+    <div class="image-column">
+      <div class="image-wrapper">
+        <img src="img/mystory2.png" alt="Illustration or photo"/>
+      </div>
+    </div>
 
-  <div class="text-column">
 
-    <h2>My Spine, My Body, and Learning to Adapt</h2>
-
-    <p>My spine has been a central part of my lived experience. I have scoliosis, which in Marfan syndrome often progresses more severely due to connective tissue weakness. I also live with dural ectasia, a condition where the lining that holds spinal fluid stretches and expands, most often in the lower spine. For me, this has caused significant nerve irritation, instability, and pain that worsens when I am upright.</p>
+    <!-- Text on the right -->
+    <div class="text-column">
+      <h2>My Spine, My Body, and Learning to Adapt</h2>
+       <p>My spine has been a central part of my lived experience. I have scoliosis, which in Marfan syndrome often progresses more severely due to connective tissue weakness. I also live with dural ectasia, a condition where the lining that holds spinal fluid stretches and expands, most often in the lower spine. For me, this has caused significant nerve irritation, instability, and pain that worsens when I am upright.</p>
 
     <p>Over time, the dural ectasia progressed and formed meningeoceles, where the weakened lining pushes into surrounding bone and presses on nerves. This led to extensive spinal fusion surgery to stabilize my spine and pelvis, protect my nervous system, and reduce abnormal movement. Even now, my body requires frequent rest. Standing or sitting for long periods can increase spinal fluid pressure and pain, which means I often need to lie down throughout the day. Some days, the pain is intense and limiting. Other days, I feel more like myself. Living in this fluctuation has taught me humility, patience, and deep respect for the body’s limits. Values that took years to </p>
 
@@ -72,65 +105,45 @@
 
     <blockquote>Honoring the body is part of the therapeutic process at Serein Therapy.</blockquote>
 
-  </div>
-
-  <div class="image-column">
-    <div class="image-wrapper">
-      <img src="./img/me3.png" alt="Me">
-    </div>
-  </div>
-
-</section>
-
-  <!-- Section 3 -->
-  <section class="blog-section-inner side-by-side">
-    <div class="text-column">
-
       <h2>Growing Up With a Brother With Disabilities</h2>
 
       <p>Another foundational influence in my life has been growing up with a brother who is deaf/blind and cognitively impaired from a developmental disability. From an early age, I witnessed how the world responds to difference, often with misunderstanding, impatience, or exclusion. I watched my parents navigate a system that had little guidance. But I also saw how powerful compassion, advocacy, and consistent support can be.</p>
 
       <p>This shaped my earliest career choices. I began working in direct care, supporting people with daily living, safety, and personal care. I learned that dignity, respect, and being truly seen matter just as much as practical support. Those experiences taught me to listen closely, to slow down, and to recognize how systems can fail the people who need them most. </p>
-
     </div>
-  </section>
 
-  <!-- Section 4 -->
-  <section class="blog-section-inner side-by-side">
+  </div>
+</section>
+
+<section class="blog-section section-dark">
+  <div class="side-by-side-wrapper">
+
+    <!-- Text on the left -->
     <div class="text-column">
-
-      <h2>Why I Became a Therapist</h2>
-
+       <h2>Why I Became a Therapist</h2>
       <p>Over time, I felt drawn toward therapy as a way to work more holistically with people. My own life had shown me that suffering is rarely just physical or emotional; it is relational, systemic, and <strong>deeply human.</strong> I wanted to sit with people in complexity, not rush them toward solutions, and help them make sense of experiences that don’t have easy answers.</p>
 
       <p>My lived experience with chronic illness, dynamic disability, and the medical system allows me to meet clients with a depth of understanding that is both professional and personal. I know what it means to grieve a body, to feel isolated by circumstances you didn’t choose, and to search for meaning in the midst of limitation.</p>
 
+     <p>My lived experience with chronic illness, dynamic disability, and the medical system allows me to meet clients with a depth of understanding that is both professional and personal. I know what it means to grieve a body, to feel isolated by circumstances you didn’t choose, and to search for meaning in the midst of limitation.</p>
+
+     <h2>Walking With You</h2>
+
+       <p>The people I work with continually remind me why this work matters. <strong>Therapy, to me, is not about fixing or optimizing people.</strong> It is about creating space where you can be fully human, exactly as you are. It is about understanding yourself more deeply, finding language for what you’re carrying, and learning how to live in a way that feels more grounded and sustainable.</p>
+
+      <div class="text">
+      </div>
     </div>
-  </section>
 
-  <!-- Section 5 -->
-  <section class="blog-section-inner side-by-side">
-    <div class="text-column">
-
-      <h2>Walking With You</h2>
-
-      <p>The people I work with continually remind me why this work matters. <strong>Therapy, to me, is not about fixing or optimizing people.</strong> It is about creating space where you can be fully human, exactly as you are. It is about understanding yourself more deeply, finding language for what you’re carrying, and learning how to live in a way that feels more grounded and sustainable.</p>
-
-      <blockquote>My life has taught me that disability and chronic illness do not define a person, but they do shape how someone moves through the world. I bring that understanding into every session, alongside compassion, curiosity, and respect.</blockquote>
-
+    <!-- Image on the right -->
+      <div class="image-column">
+      <div class="image-wrapper">
+        <img src="img/mystory3.jpg" alt="Illustration or photo" />
+      </div>
     </div>
-  </section>
 
-  <!-- Section 6 -->
-  <section class="blog-section-inner side-by-side">
-    <div class="text-column">
-
-      <h2>Walking With You</h2>
-
-      <p>If you’re here, I’m glad you found your way. And if we work together, my hope is that you’ll feel supported, understood, and never asked to minimize your experience to make it easier for someone else to hold.</p>
-
-    </div>
-  </section>
+  </div>
+</section>
 
 <footer class="site-footer">
 
@@ -162,15 +175,15 @@
       </p>
 
       <div class="footer-social">
-        <a href="#" aria-label="Instagram">
-          <img src="https://img.icons8.com/ios-filled/28/f5f1e6/instagram-new.png">
-        </a>
-        <a href="#" aria-label="Facebook">
-          <img src="https://img.icons8.com/ios-filled/28/f5f1e6/facebook-new.png">
-        </a>
-        <a href="#" aria-label="YouTube">
-          <img src="https://img.icons8.com/ios-filled/28/f5f1e6/youtube-play.png">
-        </a>
+         <a href="https://www.instagram.com/serein.therapy/" target="_blank" aria-label="Instagram">
+    <img src="https://img.icons8.com/ios-filled/28/f5f1e6/instagram-new.png">
+  </a>
+  <a href="https://www.facebook.com/profile.php?id=61581814269031" target="_blank" aria-label="Facebook">
+    <img src="https://img.icons8.com/ios-filled/28/f5f1e6/facebook-new.png">
+  </a>
+  <a href="https://www.youtube.com/channel/UCUr9izUlffAHqcr_osnxtXg" target="_blank" aria-label="YouTube">
+    <img src="https://img.icons8.com/ios-filled/28/f5f1e6/youtube-play.png">
+  </a>
       </div>
     </div>
 
@@ -187,10 +200,12 @@
       </p>
     </div>
 
-    <p>© 2026 Doré Schubert. All rights reserved.</p>
+    <p>© 2026 SEREIN THERAPY. All rights reserved.</p>
   </div>
 
 </footer>
-  <script src="mystory-menu.js"></script>
+
+  </main>
+<script src="blog-menu.js"></script>
 </body>
 </html>
