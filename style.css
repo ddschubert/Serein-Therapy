@@ -92,7 +92,7 @@ p {
   padding: 10px 30px;
   color: white;
   background-color: transparent;
-  border: 2px solid #403830;
+  border: 2px solid #ad7c59;
   font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
@@ -102,7 +102,7 @@ p {
 }
 .cta:hover {
   color: white;
-  background-color: #312613;
+  background-color: #ad7c59;
 }
 
 .brand h1 span {
@@ -246,7 +246,33 @@ p {
     display: none;
   }
 }
+.book-now {
+  position: relative;
+  display: inline-block !important;
+}
 
+.book-now::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  background-color: #ad7c59;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: underlineSweep 4.5s ease-in-out infinite;
+}
+
+@keyframes underlineSweep {
+  0%, 100% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+}
 /* End Header section */
 /* =========================
    HERO SECTION
@@ -571,6 +597,22 @@ p {
 /* -------------------------
    LEFT IMAGE (fade-right)
 -------------------------- */
+/* Horizontal line above right column */
+.service-bottom {
+  position: relative; /* needed for pseudo-element */
+  padding-top: 2rem;  /* space between line and content */
+  margin-top: 0;      /* remove extra spacing if any */
+}
+
+.service-bottom::before {
+  content: "";
+  position: absolute;
+  top: 0;              /* aligns with top of .service-bottom */
+  left: 0;
+  width: 100%;         /* full width of right column */
+  height: 2px;         /* thickness of the line */
+  background: rgba(0,0,0,0.1); /* subtle gray line */
+}
 
 .service-top {
   display: flex;
@@ -1213,7 +1255,7 @@ p {
 }
 
 .waitlist-intro p {
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 1.6;
   color: #333;
   margin-bottom: 1.5rem;
