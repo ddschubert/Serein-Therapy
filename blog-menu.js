@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Select the elements
     // We use simpler selectors to ensure they catch the elements regardless of nesting
-    const hamburger = document.querySelector('.hamburger');
-    const mobile_menu = document.querySelector('.nav-list ul');
-    const menu_items = document.querySelectorAll('.nav-list ul li a');
-    const header = document.querySelector('#header .header');
+   const hamburger = document.querySelector('.hamburger');
+const mobile_menu = document.querySelector('.nav-list');
+const menu_items = document.querySelectorAll('.nav-list li a');
+const header = document.querySelector('#header');
 
     // 2. Safety Check: Only run if elements exist
     if (hamburger && mobile_menu) {

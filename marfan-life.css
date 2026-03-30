@@ -1,3 +1,31 @@
+/* ================= FONTS ================= */
+@font-face {
+  font-family: 'Roxborough';
+  src: url('./fonts/roxborough-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roxborough';
+  src: url('./fonts/roxborough-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roxborough";
+  src: url("/fonts/Roxborough-RegularItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roxborough";
+  src: url("/fonts/Roxborough-ThinItalic.otf") format("opentype");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* ================= BASE ================= */
 * {
   box-sizing: border-box;
@@ -11,7 +39,9 @@ body {
   color: #081b24;
   background-color: #fefcf7;
 }
-
+h1, h2, h3, .brand {
+  font-family: 'Roxborough', "Times New Roman", serif;
+}
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -191,22 +221,39 @@ body {
   background: url('img/insurance.jpg') center/cover no-repeat;
 }
 
+.blog-hero {
+  width: 100%;
+  height: 75vh;
+  min-height: 420px;
+  background-image: var(--hero-image);
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .blog-hero-overlay {
-  background: rgba(8,27,36,0.6);
-  padding: 2rem 3rem;
-  border-radius: 12px;
+  background: rgba(8, 27, 36, 0.55);
+  padding: 4rem 3rem;
   text-align: center;
-  color: #fefcf7;
+  max-width: 900px;
+  border-radius: 12px;
 }
 
 .blog-hero-overlay h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  font-family: 'Roxborough', Georgia, serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: #fefcf7;
+  margin-bottom: 1rem;
 }
 
 .blog-hero-overlay p {
-  font-style: italic;
   font-size: 1.2rem;
+  font-style: italic;
+  color: #fefcf7;
 }
 
 /* ================= LAYOUT ================= */

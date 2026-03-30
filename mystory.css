@@ -66,7 +66,18 @@ h1, h2, h3, .brand {
 }
 
 /* ================= HEADER ================= */
-.header {
+./* ================= HEADER BASE ================= */
+
+#header {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  background-color: #081b24;
+}
+
+.header-container {
   min-height: 8vh;
   max-width: 1300px;
   margin: 0 auto;
@@ -74,79 +85,117 @@ h1, h2, h3, .brand {
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  background-color: #081b24;
 }
+#header .nav-list ul {
+  display: flex !important;
+  gap: 7rem !important;
+}
+/* ================= LOGO ================= */
 
-
-/* LOGO (match sizing + proportion) */
-
+.brand-logo {
+  margin-right: auto;
+}
 .brand-logo img {
   height: 70px;
   width: auto;
   object-fit: contain;
 }
+/* ================= NAV (DESKTOP) ================= */
 
-/* NAV */
 .nav-bar {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  width: auto;   /* IMPORTANT: remove 100% */
 }
-/* NAV LIST (desktop default = inline row) */
-.nav-list {
-  list-style: none;
+
+.nav-list ul {
   display: flex;
-  gap: 8rem !important;
+  font-size: 1.5rem;
+  letter-spacing: 0.2rem !important;
+  gap: 40px;
+  list-style: none;
   margin: 0;
-  margin-left: auto;
   padding: 0;
 }
 
-/* LINKS */
-.nav-list li a {
-  font-size: 1.5rem !important;
-  font-weight: 500;
-  letter-spacing: 0.1rem!important;
-  text-decoration: none;
+.nav-list ul li a {
   color: white;
+  text-decoration: none;
   text-transform: uppercase;
-  display: block;
-  transition: color 0.2s ease;
+  letter-spacing: 2px;
 }
 
-.nav-list li a:hover {
-  color: #FFE4C4;
-}
+
+/* ================= HAMBURGER (DESKTOP HIDDEN) ================= */
 
 .hamburger {
   display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 2000;
 }
 
-/* MOBILE */
+.hamburger span {
+  width: 25px;
+  height: 2px;
+  background: white;
+  transition: 0.3s ease;
+}
+
+/* ================= MOBILE MENU ================= */
+
 @media (max-width: 768px) {
 
   .hamburger {
     display: flex;
-    flex-direction: column;
+    z-index: 2001;
+  }
+
+  .nav-list {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100vw;
+    height: 100vh;
+    background: #081b24;
+
+    display: flex;
     justify-content: center;
-    gap: 6px;
+    align-items: center;
 
-    width: 40px;
-    height: 40px;
-
-    cursor: pointer;
     z-index: 2000;
+    transition: right 0.5s ease;
   }
 
-  .hamburger span {
-    height: 2px;
+  .nav-list.active {
+    right: 0;
+  }
+
+  /* 🔥 THIS is what forces vertical stacking */
+  .nav-list ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-list ul li {
     width: 100%;
-    background: white;
-    transition: 0.3s ease;
+    text-align: center;
   }
 
-  /* ANIMATION → X */
+  .nav-list ul li a {
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+  }
+
+  /* hamburger animation */
   .hamburger.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
   }
@@ -157,31 +206,6 @@ h1, h2, h3, .brand {
 
   .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
-  }
-
-  /* NAV MENU */
-  .nav-list {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 100vw;
-    height: 100vh;
-
-    background: #081b24;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 3rem;
-
-    transition: right 0.5s ease;
-    z-index: 1500;
-  }
-
-  .nav-list.active {
-    right: 0;
   }
 }
 /* OPTIONAL underline animation hook */
