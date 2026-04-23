@@ -358,6 +358,14 @@ p {
 #hero h2 {
   font-size: 2.8rem;
   color: #EDE6DE;
+  margin-bottom: 10px;
+}
+#hero h3 {
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: 200;
+  font-family: "Times New Roman", Georgia, serif;
+  color: #EDE6DE;
   margin-bottom: 80px;
 }
 
@@ -439,6 +447,11 @@ p {
 
    #hero h2 {
     font-size: clamp(1.8rem, 5vw, 2.8rem);
+    margin-bottom: 0;
+    text-align: center;
+  }
+  #hero h3 {
+    font-size: clamp(1.2rem, 5vw, 2.8rem);
     margin-bottom: 0;
     text-align: center;
   }
