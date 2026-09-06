@@ -802,164 +802,520 @@ button {
 /* =========================================================
    THERAPEUTIC APPROACHES
    ========================================================= */
+
 #therapeutic-approaches {
+  position: relative;
+  width: 100%;
+
   padding: 6rem 2rem;
-  overflow: visible;
-  background: var(--ink);
+
+  background-color: var(--ink);
   text-align: center;
+
+  overflow: visible;
 }
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
 
 #therapeutic-approaches .therapeutic-title {
   margin: 0 0 3.5rem;
-  color: #fff;
+
+  font-family: 'Roxborough', Georgia, serif;
+
   font-size: clamp(3.4rem, 4vw, 4.6rem);
   font-weight: 400;
+  line-height: 1.1;
+
+  color: #ffffff;
 }
+
+
+/* =========================================================
+   GRID
+
+   ACT              NARRATIVE
+
+           SOMATIC
+   ========================================================= */
 
 #therapeutic-approaches .accordion-grid {
   display: grid;
-  grid-template-columns: repeat(2, 320px);
+
+  grid-template-columns:
+    minmax(0, 320px)
+    minmax(0, 320px);
+
   grid-template-areas:
-    'act narrative'
-    'somatic somatic';
+    "act narrative"
+    "somatic somatic";
+
   justify-content: center;
   align-items: start;
-  gap: 2rem;
+
+  column-gap: 2rem;
+  row-gap: 2rem;
+
   width: 100%;
-  max-width: 700px;
+  max-width: 660px;
+
   margin: 0 auto;
+
   overflow: visible;
 }
 
-#therapeutic-approaches .act { grid-area: act; }
-#therapeutic-approaches .narrative { grid-area: narrative; }
+
+#therapeutic-approaches .act {
+  grid-area: act;
+}
+
+
+#therapeutic-approaches .narrative {
+  grid-area: narrative;
+}
+
 #therapeutic-approaches .somatic {
   grid-area: somatic;
+
+  width: 320px;
+  max-width: 320px;
+
   justify-self: center;
 }
 
+/* =========================================================
+   PILLS
+   ========================================================= */
+
 #therapeutic-approaches .accordion-item.pill {
   position: relative;
-  width: 320px;
+
   min-height: 88px;
+
   padding: 0.75rem 1.5rem;
-  overflow: visible;
+
+  background-color: #123140;
+
   border-radius: 50px;
-  background: var(--ink-soft);
+
   text-align: center;
-  transition: transform 0.25s ease, background-color 0.25s ease;
+
+  overflow: visible;
+
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease;
 }
+
+
+/* Keep Somatic same width as top pills */
+
+#therapeutic-approaches .somatic {
+  width: 320px;
+  max-width: 100%;
+}
+
 
 #therapeutic-approaches .accordion-item.pill:hover {
   transform: translateY(-3px);
 }
 
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
 #therapeutic-approaches .accordion-header {
   position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
   min-height: 62px;
-  padding: 0.75rem 2.25rem 0.75rem 1rem;
+
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+
+  border: none;
   border-radius: 50px;
+
   background: transparent;
-  color: #fff;
+
   font-family: 'Cormorant Garamond', Georgia, serif;
+
   font-size: 1.8rem;
   font-weight: 600;
+
   line-height: 1.2;
+
+  color: #ffffff;
+
   text-align: center;
+
   cursor: pointer;
-  transition: background-color 0.25s ease;
 }
 
+
 #therapeutic-approaches .accordion-header:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background-color: rgba(255, 255, 255, 0.06);
 }
+
+
+/* =========================================================
+   PLUS
+   ========================================================= */
 
 #therapeutic-approaches .accordion-header .icon {
   position: absolute;
+
   top: 50%;
-  right: 0.25rem;
+  right: 0.35rem;
+
   transform: translateY(-50%);
+
   font-family: Arial, sans-serif;
+
   font-size: 2rem;
   font-weight: 300;
   line-height: 1;
+
+  color: #ffffff;
+
   pointer-events: none;
+
   transition: transform 0.3s ease;
 }
 
+
 #therapeutic-approaches .accordion-item.active .icon {
-  transform: translateY(-50%) rotate(45deg);
+  transform:
+    translateY(-50%)
+    rotate(45deg);
 }
+
+
+/* =========================================================
+   DESCRIPTION BOXES — DESKTOP
+   ========================================================= */
 
 #therapeutic-approaches .accordion-content {
   position: absolute;
-  z-index: 10;
+
+  z-index: 20;
+
   width: 280px;
-  padding: 1.25rem;
+
+  padding: 1.4rem;
+
   border-radius: 20px;
-  background: var(--ink-panel);
-  color: #e1e1e1;
+
+  background-color: #0b2736;
+
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s ease;
 }
+
 
 #therapeutic-approaches .accordion-content p {
   margin: 0;
-  color: #e1e1e1;
+
+  font-family: Georgia, serif;
+
   font-size: 1.55rem;
   line-height: 1.55;
+
+  color: #e1e1e1;
+
+  text-align: left;
 }
+
+
+/* ACT opens left */
 
 #therapeutic-approaches .act .accordion-content {
   top: 50%;
   right: calc(100% + 1rem);
-  transform: translateY(-50%) translateX(10px);
+
+  transform:
+    translateY(-50%)
+    translateX(10px);
 }
+
+
+/* Narrative opens right */
 
 #therapeutic-approaches .narrative .accordion-content {
   top: 50%;
   left: calc(100% + 1rem);
-  transform: translateY(-50%) translateX(-10px);
+
+  transform:
+    translateY(-50%)
+    translateX(-10px);
 }
+
+
+/* Somatic opens down */
 
 #therapeutic-approaches .somatic .accordion-content {
   top: calc(100% + 1rem);
   left: 50%;
+
   width: 320px;
-  transform: translateX(-50%) translateY(-10px);
+
+  transform:
+    translateX(-50%)
+    translateY(-10px);
 }
 
-#therapeutic-approaches .accordion-item.active .accordion-content {
+
+/* =========================================================
+   OPEN STATES
+   ========================================================= */
+
+#therapeutic-approaches
+.accordion-item.active
+.accordion-content {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-#therapeutic-approaches .act.active .accordion-content,
-#therapeutic-approaches .narrative.active .accordion-content {
-  transform: translateY(-50%) translateX(0);
+
+#therapeutic-approaches
+.act.active
+.accordion-content {
+  transform:
+    translateY(-50%)
+    translateX(0);
 }
 
-#therapeutic-approaches .somatic.active .accordion-content {
-  transform: translateX(-50%) translateY(0);
+
+#therapeutic-approaches
+.narrative.active
+.accordion-content {
+  transform:
+    translateY(-50%)
+    translateX(0);
 }
+
+
+#therapeutic-approaches
+.somatic.active
+.accordion-content {
+  transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+
+/* =========================================================
+   PRINCIPLES
+   ========================================================= */
 
 #therapeutic-approaches .approaches-principles {
   display: flex;
+
   flex-wrap: wrap;
-  align-items: center;
+
   justify-content: center;
-  gap: 1.5rem 5rem;
+  align-items: center;
+
+  column-gap: 5rem;
+  row-gap: 1.5rem;
+
   max-width: 900px;
+
   margin: 5rem auto 0;
-  color: var(--bronze);
+
+  font-family: Georgia, serif;
+
   font-size: 1.8rem;
+
+  color: var(--bronze);
+
   text-align: center;
 }
 
+
+/* =========================================================
+   TABLET
+   Keep the 2 + 1 layout
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  #therapeutic-approaches {
+    overflow: hidden;
+  }
+
+
+  /*
+     On smaller screens the descriptions open DOWN
+     instead of left/right so they can't leave the screen.
+  */
+
+  #therapeutic-approaches .accordion-content,
+  #therapeutic-approaches .act .accordion-content,
+  #therapeutic-approaches .narrative .accordion-content,
+  #therapeutic-approaches .somatic .accordion-content {
+
+    position: relative;
+
+    top: auto;
+    left: auto;
+    right: auto;
+
+    width: 100%;
+
+    max-height: 0;
+
+    margin: 0;
+
+    padding: 0 1.2rem;
+
+    overflow: hidden;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: none;
+
+    transition:
+      max-height 0.4s ease,
+      opacity 0.3s ease,
+      padding 0.3s ease,
+      margin 0.3s ease;
+  }
+
+
+  #therapeutic-approaches
+  .accordion-item.active
+  .accordion-content {
+
+    max-height: 300px;
+
+    margin-top: 0.5rem;
+
+    padding: 1.25rem;
+
+    opacity: 1;
+    visibility: visible;
+
+    transform: none;
+  }
+
+
+  #therapeutic-approaches
+  .accordion-item.active {
+    border-radius: 28px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   STILL 2 ON TOP + 1 BELOW
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  #therapeutic-approaches {
+    padding: 5rem 1.25rem;
+  }
+
+
+  #therapeutic-approaches .therapeutic-title {
+    margin-bottom: 3rem;
+
+    font-size: clamp(3rem, 10vw, 3.8rem);
+  }
+
+
+  #therapeutic-approaches .accordion-grid {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    grid-template-areas:
+      "act narrative"
+      "somatic somatic";
+
+    column-gap: 1rem;
+    row-gap: 1.25rem;
+
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0 auto;
+  }
+
+
+  #therapeutic-approaches .accordion-item.pill {
+    width: 100%;
+
+    min-height: 78px;
+
+    padding: 0.5rem 0.75rem;
+  }
+
+
+  #therapeutic-approaches .somatic {
+    width: calc(50% - 0.5rem);
+
+    justify-self: center;
+  }
+
+
+  #therapeutic-approaches .accordion-header {
+    min-height: 66px;
+
+    padding:
+      0.5rem
+      1.8rem
+      0.5rem
+      0.5rem;
+
+    font-size: clamp(1.35rem, 4.4vw, 1.65rem);
+
+    line-height: 1.15;
+  }
+
+
+  #therapeutic-approaches .accordion-header .icon {
+    right: 0.15rem;
+
+    font-size: 1.6rem;
+  }
+
+
+  #therapeutic-approaches .accordion-content p {
+    font-size: 1.4rem;
+
+    text-align: center;
+  }
+
+
+  #therapeutic-approaches .approaches-principles {
+    gap: 1rem 2rem;
+
+    margin-top: 3.5rem;
+
+    font-size: 1.5rem;
+  }
+
+}
 /* =========================================================
    ABOUT
    ========================================================= */
@@ -1553,36 +1909,6 @@ button {
   #services .services-column:first-child .service-item:last-child {
     border-bottom: 0;
   }
-
-  #therapeutic-approaches .accordion-content,
-  #therapeutic-approaches .act .accordion-content,
-  #therapeutic-approaches .narrative .accordion-content,
-  #therapeutic-approaches .somatic .accordion-content {
-    position: relative;
-    top: auto;
-    right: auto;
-    left: auto;
-    width: 100%;
-    max-height: 0;
-    margin-top: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
-    transform: none;
-    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease, padding 0.3s ease;
-  }
-
-  #therapeutic-approaches .accordion-item.active .accordion-content {
-    max-height: 320px;
-    margin-top: 0.75rem;
-    padding: 1.25rem;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-  }
-}
 
 @media (max-width: 950px) {
   #hero {
