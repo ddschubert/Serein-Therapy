@@ -1129,3 +1129,320 @@ body {
   }
 
 }
+/* =========================================================
+   MY STORY PAGE
+   Uses Insurance / Blog page styling as the foundation
+   ========================================================= */
+
+
+/* Keep My Story as one generous content column */
+
+.story-page-layout {
+  grid-template-columns: 1fr;
+  max-width: 1150px;
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.story-intro {
+  background-color: #f5f1e6;
+
+  border-left: 4px solid #b0815c;
+  border-radius: 10px;
+
+  padding: 1.75rem 2rem;
+
+  color: #081b24;
+
+  box-shadow: 0 2px 10px rgba(8, 27, 36, 0.04);
+}
+
+
+.story-intro p {
+  margin: 0;
+
+  font-size: 1.2rem;
+  line-height: 1.8;
+
+  color: #2c3e47;
+}
+
+
+/* =========================================================
+   STORY SECTIONS
+   ========================================================= */
+
+.story-feature {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.2fr)
+    minmax(300px, 0.8fr);
+
+  gap: clamp(2.5rem, 5vw, 5rem);
+
+  align-items: center;
+
+  padding: 2rem 0;
+}
+
+
+/* Alternating layout */
+
+.story-feature-reverse {
+  grid-template-columns:
+    minmax(300px, 0.8fr)
+    minmax(0, 1.2fr);
+}
+
+
+/* =========================================================
+   COPY
+   ========================================================= */
+
+.story-copy {
+  min-width: 0;
+}
+
+
+.story-copy h2 {
+  font-family: 'Roxborough', Georgia, serif;
+
+  font-size: clamp(1.8rem, 3vw, 2.25rem);
+
+  color: #081b24;
+
+  border-left: 5px solid #b0815c;
+
+  padding-left: 1rem;
+
+  margin:
+    0
+    0
+    1.25rem;
+}
+
+
+/* More space when another section heading
+   appears inside the same text column */
+
+.story-copy p + h2,
+.story-quote + h2 {
+  margin-top: 3rem;
+}
+
+
+.story-copy p {
+  font-size: 1.125rem;
+
+  line-height: 1.75;
+
+  color: #2c3e47;
+
+  margin-bottom: 1.25rem;
+}
+
+
+/* =========================================================
+   IMAGES
+   ========================================================= */
+
+.story-image {
+  position: relative;
+
+  width: 100%;
+}
+
+
+.story-image img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  max-height: 600px;
+
+  object-fit: cover;
+
+  border-radius: 14px;
+
+  border: 1px solid #e0d8cf;
+
+  box-shadow:
+    0 8px 24px
+    rgba(8, 27, 36, 0.08);
+}
+
+
+/* Subtle bronze detail behind image */
+
+.story-image::before {
+  content: "";
+
+  position: absolute;
+
+  width: 75%;
+  height: 75%;
+
+  right: -12px;
+  bottom: -12px;
+
+  background-color: #b0815c;
+
+  border-radius: 14px;
+
+  opacity: 0.13;
+
+  z-index: -1;
+}
+
+
+/* =========================================================
+   QUOTE
+   ========================================================= */
+
+.story-quote {
+  margin: 2.25rem 0;
+
+  padding: 1.75rem 2rem;
+
+  background-color: #081b24;
+
+  border-radius: 12px;
+
+  color: #fefcf7;
+
+  font-family: 'Roxborough', Georgia, serif;
+  font-size: 1.25rem;
+  font-style: italic;
+
+  line-height: 1.6;
+
+  box-shadow:
+    0 4px 16px
+    rgba(8, 27, 36, 0.08);
+}
+
+
+/* =========================================================
+   SECTION DIVIDERS
+   ========================================================= */
+
+.story-page-layout .blog-section {
+  padding-bottom: 3rem;
+
+  margin-bottom: 3rem;
+
+  border-bottom:
+    1px solid
+    rgba(8, 27, 36, 0.12);
+}
+
+
+.story-page-layout .blog-section:last-child {
+  border-bottom: none;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .story-page-layout {
+    display: block;
+  }
+
+
+  .story-feature,
+  .story-feature-reverse {
+    grid-template-columns: 1fr;
+
+    gap: 2rem;
+
+    padding: 1rem 0;
+  }
+
+
+  /*
+     Text first on smaller screens,
+     regardless of desktop image placement.
+  */
+
+  .story-feature-reverse .story-copy {
+    order: 1;
+  }
+
+  .story-feature-reverse .story-image {
+    order: 2;
+  }
+
+
+  .story-image {
+    max-width: 650px;
+
+    margin: 0 auto;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .story-page-layout {
+    margin-top: 2.5rem;
+  }
+
+
+  .story-intro {
+    padding: 1.4rem;
+  }
+
+
+  .story-intro p {
+    font-size: 1.05rem;
+  }
+
+
+  .story-copy h2 {
+    font-size: 1.7rem;
+
+    padding-left: 0.85rem;
+  }
+
+
+  .story-copy p {
+    font-size: 1.05rem;
+
+    line-height: 1.7;
+  }
+
+
+  .story-quote {
+    padding: 1.5rem;
+
+    font-size: 1.1rem;
+  }
+
+
+  .story-page-layout .blog-section {
+    padding-bottom: 2rem;
+
+    margin-bottom: 2.5rem;
+  }
+
+
+  .story-image::before {
+    right: -7px;
+    bottom: -7px;
+  }
+
+}

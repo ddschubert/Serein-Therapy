@@ -27,46 +27,28 @@
 }
 
 /* ================= BASE ================= */
-.blog-page-body,
-html,
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-html {
-  font-size: 10px;
-  font-weight: 400;
-  font-family: 'Roxborough', "Times New Roman", serif;
-  scroll-behavior: smooth;
-}
 
-body, p, li, label, input, textarea, button {
-  font-family: "Times New Roman", Georgia, serif;
-}
-
-h1, h2, h3, .brand {
-  font-family: 'Roxborough', "Times New Roman", serif;
-}
-.bold {
-  font-weight: 700;
-  letter-spacing: 0.06rem;
-}
-
-/* ================= BLOG PAGE ================= */
-.blog-page-body .blog-container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  font-family: 'Roxborough', Georgia, serif;
+body {
+  font-family: 'Times New Roman', Georgia, serif;
+  line-height: 1.6;
   color: #081b24;
   background-color: #fefcf7;
 }
+h1, h2, h3, .brand {
+  font-family: 'Roxborough', "Times New Roman", serif;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
 
-/* ================= HEADER ================= */
-./* ================= HEADER BASE ================= */
+/* ================= HEADER (MATCHED STYLE) ================= */
 
 #header {
   position: fixed;
@@ -77,6 +59,7 @@ h1, h2, h3, .brand {
   background-color: #081b24;
 }
 
+/* container */
 .header-container {
   min-height: 8vh;
   max-width: 1300px;
@@ -88,10 +71,10 @@ h1, h2, h3, .brand {
 }
 #header .nav-list ul {
   display: flex !important;
-  gap: 7rem !important;
+  gap: 2rem !important;
 }
-/* ================= LOGO ================= */
 
+/* LOGO (match sizing + proportion) */
 .brand-logo {
   margin-right: auto;
 }
@@ -100,112 +83,121 @@ h1, h2, h3, .brand {
   width: auto;
   object-fit: contain;
 }
-/* ================= NAV (DESKTOP) ================= */
 
+/* NAV */
 .nav-bar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
-
-.nav-list ul {
-  display: flex;
-  font-size: 1.5rem;
-  letter-spacing: 0.2rem !important;
-  gap: 40px;
+/* NAV LIST (desktop default = inline row) */
+.nav-list {
   list-style: none;
+  display: flex;
+  gap: 3rem;
   margin: 0;
+  margin-left: auto;
   padding: 0;
 }
 
-.nav-list ul li a {
-  color: white;
+/* LINKS */
+.nav-list li a {
+  font-size: .90rem !important;
+  font-weight: 500;
+  letter-spacing: 0.1rem!important;
   text-decoration: none;
+  color: white;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  display: block;
+  transition: color 0.2s ease;
 }
 
+.nav-list li a:hover {
+  color: #FFE4C4;
+}
 
-/* ================= HAMBURGER (DESKTOP HIDDEN) ================= */
+/* ================= HAMBURGER ================= */
 
 .hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
+  height: 60px;
+  width: 60px;
+  display: none; /* hidden on desktop */
+  border: 3px solid white;
+  border-radius: 50%;
+  position: relative;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  z-index: 2000;
+  transform: scale(0.8);
+  margin-left: 20px;
 }
 
-.hamburger span {
-  width: 25px;
+.hamburger:after {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 3px solid white;
+  animation: hamburger_puls 1s ease infinite;
+}
+
+.hamburger .bar {
   height: 2px;
-  background: white;
+  width: 30px;
+  position: relative;
+  background-color: white;
+}
+
+.hamburger .bar::before,
+.hamburger .bar::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  background-color: white;
   transition: 0.3s ease;
 }
 
-/* ================= MOBILE MENU ================= */
+.hamburger .bar::after { top: 8px; }
+.hamburger .bar::before { bottom: 8px; }
 
+.hamburger.active .bar::before { bottom: 0; }
+.hamburger.active .bar::after { top: 0; }
+
+/* ================= MOBILE MENU ================= */
 @media (max-width: 768px) {
 
   .hamburger {
     display: flex;
-    z-index: 2001;
   }
 
-  .nav-list {
+  #header .nav-list ul {
     position: fixed;
-    top: 0;
-    right: -100%;
+    background-color: #081b24;
     width: 100vw;
     height: 100vh;
-    background: #081b24;
+    left: 100%;
+    top: 0;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 2000;
-    transition: right 0.5s ease;
-  }
-
-  .nav-list.active {
-    right: 0;
-  }
-
-  /* 🔥 THIS is what forces vertical stacking */
-  .nav-list ul {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 40px;
+    align-items: center;
+    gap: 3rem;
 
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    transition: 0.5s ease left;
+    z-index: 1;
   }
 
-  .nav-list ul li {
-    width: 100%;
-    text-align: center;
+  #header .nav-list ul.active {
+    left: 0%;
   }
 
-  .nav-list ul li a {
-    font-size: 1.8rem;
-    color: white;
-    text-decoration: none;
-  }
-
-  /* hamburger animation */
-  .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+  #header .nav-list ul li a {
+    font-size: 1.5rem;
   }
 }
 /* OPTIONAL underline animation hook */
@@ -215,7 +207,20 @@ h1, h2, h3, .brand {
 }
 
 
-/* ================= BLOG HERO ================= */
+/* ================= HERO ================= */
+.blog-hero {
+  background: url('img/bloghero.jpg') center/cover no-repeat;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* OVERRIDE */
+.blog-hero.insurance-hero {
+  background: url('img/insurance.jpg') center/cover no-repeat;
+}
+
 .blog-hero {
   width: 100%;
   height: 75vh;
@@ -251,228 +256,593 @@ h1, h2, h3, .brand {
   color: #fefcf7;
 }
 
-/* ================= BLOG CONTENT ================= */
-.blog-page-body .blog-container .blog-title {
-  font-size: 2.8rem;
-  color: #b0815c;
-  font-weight: 700;
-  line-height: 1.2;
-  text-align: center;
+/* ================= LAYOUT ================= */
+.blog-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 3rem;
+  margin: 4rem 0;
 }
 
-.blog-page-body .blog-container .blog-subtitle {
-  font-size: 1.6rem;
-  font-style: italic;
-  color: #081b24;
-  text-align: center;
-  margin-top: 0.5rem;
-  margin-bottom: 2rem;
+.blog-main {
+  width: 100%;
 }
 
-.blog-page-body .blog-container h2 {
-  font-size: 2rem;
-  color: #081b24;
-  margin-top: 2rem;
+.blog-sidebar {
+  position: relative;
+}
+
+.blog-sidebar .sidebar-inner {
+  position: sticky;
+  top: 120px;
+  background-color: #fefcf7;
+  padding: 2rem;
+  border: 1px solid #e0d8cf;
+  border-radius: 12px;
+}
+
+.blog-sidebar h3 {
   margin-bottom: 1rem;
+  border-left: 4px solid #b0815c;
+  padding-left: 0.5rem;
+}
+
+.sidebar-blog-list {
+  list-style: none;
+}
+
+.sidebar-blog-list li {
+  margin-bottom: 1rem;
+}
+
+.sidebar-blog-list a {
+  text-decoration: none;
+  color: #081b24;
+}
+
+.sidebar-title {
+  font-weight: 700;
+}
+
+.sidebar-meta {
+  font-style: italic;
+  color: #6d5c45;
+}
+
+/* ================= BLOG SECTIONS ================= */
+.blog-section {
+  margin-bottom: 3rem;
+}
+
+.blog-section h2 {
+  font-size: 2rem;
   border-left: 5px solid #b0815c;
   padding-left: 1rem;
-  margin-left: 2rem;
+  margin-bottom: 1rem;
 }
 
-.blog-page-body .blog-container p {
-  font-size: 2rem;
-  margin-bottom: 1.2rem;
-  line-height: 1.8;
-  padding-left: 3rem;
-  padding-right: 3rem;
+.blog-section p {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
 }
 
-.blog-page-body .blog-container strong {
-  color: #a35e2c;
+
+/* ================= INSURANCE TABLE ================= */
+.insurance-table {
+  margin-top: 1.5rem;
+  overflow-x: auto;
 }
-.blog-page-body blockquote {
-  font-style: italic;
-  font-family: "Georgia";
-  background-color: #e6e2d3;
-  border-left: 5px solid #b0815c;
-  padding: 1rem 1.5rem;
-  margin: 2.5rem 0;
+
+.insurance-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fefcf7;
+  border: 1px solid #e0d8cf;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.insurance-table th,
+.insurance-table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+/* Header */
+.insurance-table th {
+  background-color: #081b24;
+  color: #fefcf7;
+  font-weight: 500;
+}
+
+/* Rows */
+.insurance-table tr {
+  border-bottom: 1px solid #e0d8cf;
+  transition: background-color 0.2s ease;
+}
+
+.insurance-table tr:hover {
+  background-color: #f5f1e6;
+}
+
+.insurance-table tr:last-child {
+  border-bottom: none;
+}
+
+/* ================= BADGES ================= */
+.badge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Green */
+.badge-yes {
+  background-color: #e6f4ea;
+  color: #2d6a4f;
+}
+
+/* Yellow */
+.badge-maybe {
+  background-color: #fdf3d6;
+  color: #8a6d3b;
+}
+
+/* Red */
+.badge-no {
+  background-color: #fbe4e6;
+  color: #7a1c1c;
+}
+/* ================= BASE ================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Times New Roman', Georgia, serif;
+  line-height: 1.6;
   color: #081b24;
-  font-size: 1.75rem;
-  border-radius: 8px;
+  background-color: #fefcf7;
 }
 
-/* FULL-WIDTH SECTIONS */
-.blog-section {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  padding: 4rem 0;
-}
-
-.blog-section-inner {
-  max-width: 900px;
+.container {
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-.section-light {
-  background-color: #EDE6DE;
+/* Header section */
+#header {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
 }
 
-.section-white {
-  background-color: #ffffff;
+#header .header {
+  min-height: 8vh;
+  background-color: transparent;
+  transition: background-color 0.4s ease;
 }
-
-.section-dark {
-  background-color: #081b24;
-  color: #fefcf7;
-}
-
-.blog-page-body .section-dark,
-.blog-page-body .section-dark h2,
-.blog-page-body .section-dark h3,
-.blog-page-body .section-dark p {
-  color: #fefcf7 !important;
-}
-
-/* ================= BLOG PICS ================= */
-.blog-section-inner.side-by-side {
+#header .nav-bar {
+  color: transparent;
   display: flex;
-  flex-wrap: nowrap;
-  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
+  height: 100%;
+  max-width: 1300px;
+  padding: 0 10px;
 }
-
-.text-column {
-  flex: 2;
-  min-width: 0;
-  font-size: 1rem;
-}
-
-.image-column {
-  flex: 1;
-  min-width: 150px;
+#header .nav-list ul {
+  list-style: none;
+  position: absolute;
+  background-color: #081b24;
+  width: 100vw;
+  height: 100vh;
+  left: 100%;
+  top: 0;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  overflow-x: hidden;
+  transition: 0.5s ease left;
+}
+#header .nav-list ul.active {
+  left: 0%;
+}
+#header .nav-list ul a {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  padding: 20px;
+  display: block;
+}
+#header .nav-list ul li:hover a {
+  color: #FFE4C4;
+}
+#header .hamburger {
+  height: 60px;
+  width: 60px;
+  display: inline-block;
+  border: 3px solid white;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  cursor: pointer;
+  transform: scale(0.8);
+  margin-right: 20px;
+}
+#header .hamburger:after {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 3px solid white;
+  animation: hamburger_puls 1s ease infinite;
+}
+#header .hamburger .bar {
+  height: 2px;
+  width: 30px;
+  position: relative;
+  background-color: white;
+  z-index: -1;
+}
+#header .hamburger .bar::after,
+#header .hamburger .bar::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  background-color: white;
+  transition: 0.3s ease;
+  transition-property: top, bottom;
+}
+#header .hamburger .bar::after {
+  top: 8px;
+}
+#header .hamburger .bar::before {
+  bottom: 8px;
+}
+#header .hamburger.active .bar::before {
+  bottom: 0;
+}
+#header .hamburger.active .bar::after {
+  top: 0;
+}
+@media (min-width: 769px) {
+  #header .nav-list ul {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    width: auto;
+    height: auto;
+    background: none;
+  }
+
+  #header .hamburger {
+    display: none;
+  }
+}
+.book-now {
+  position: relative;
+  display: inline-block !important;
+}
+
+.book-now::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  background-color: #ad7c59;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: underlineSweep 4.5s ease-in-out infinite;
+}
+
+@keyframes underlineSweep {
+  0%, 100% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+}
+/* End Header section */
+
+/* ================= HERO ================= */
+.blog-hero {
+  background: url('img/bloghero.jpg') center/cover no-repeat;
+  height: 60vh;
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-.side-by-side-wrapper {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+.blog-hero-overlay {
+  background: rgba(8,27,36,0.6);
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  text-align: center;
+  color: #fefcf7;
+}
+
+.blog-hero-overlay h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-hero-overlay p {
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+/* ================= LAYOUT ================= */
+.blog-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 3rem;
+  margin: 4rem 0;
+}
+
+/* ================= BLOG MAIN ================= */
+.blog-main {
   width: 100%;
-  align-items: center;
 }
 
-/* ================= BLOG IMAGES (DESKTOP) ================= */
-.image-wrapper {
-  position: relative;
-  display: block;       /* change from inline-block to block */
-  width: 80%;           /* wrapper takes 60% of container on desktop */
-  margin: 1rem auto;    /* centers wrapper */
+/* Section spacing */
+.blog-section {
+  margin-bottom: 3rem;
 }
 
-.image-wrapper img {
-  width: 100%;           /* fill wrapper width */
-  height: auto;
-  border-radius: 16px;
-  object-fit: cover;
-  display: block;        /* ensures it fills wrapper correctly */
-  padding: 0.5rem;
-  box-shadow: 4px 4px 10px rgba(0,0,0,0.15);
-  border: 2px solid #b0815c;
+/* Section titles */
+.blog-section h2 {
+  font-size: 2rem;
+  border-left: 5px solid #b0815c;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
 }
 
-/* Decorative corner accent */
-.image-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 30px;
-  height: 30px;
-  border-top: 4px solid #b0815c;
+/* Paragraphs */
+.blog-section p {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+  color: #2c3e47;
+}
+
+/* ================= SIDEBAR ================= */
+.blog-sidebar .sidebar-inner {
+  position: sticky;
+  top: 120px;
+  background-color: #fefcf7;
+  padding: 2rem;
+  border: 1px solid #e0d8cf;
+  border-radius: 12px;
+}
+
+.blog-sidebar h3 {
+  margin-bottom: 1rem;
   border-left: 4px solid #b0815c;
-  border-radius: 8px 0 0 0;
+  padding-left: 0.5rem;
 }
 
-/* ================= BLOG IMAGES (MOBILE) ================= */
-@media screen and (max-width: 768px) {
-
-  /* Stack side-by-side vertically */
-  .side-by-side-wrapper,
-  .blog-section-inner.side-by-side {
-    flex-direction: column !important;  /* stack items */
-    flex-wrap: wrap !important;
-  }
-
-  .text-column,
-  .image-column {
-    width: 100%;           /* take full width */
-    display: block;        /* stop flex alignment */
-  }
-
-  /* Optional: center images */
-  .image-wrapper {
-    width: 80%;           /* or whatever mobile size you want */
-    margin: 1rem auto;    /* centers the image */
-  }
-
-  .image-wrapper img {
-    width: 100%;
-    display: block;
-    padding: 0.25rem;
-    border-radius: 12px;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-  }
-
-  .image-wrapper::after {
-    width: 20px;
-    height: 20px;
-    border-top: 3px solid #b0815c;
-    border-left: 3px solid #b0815c;
-  }
-    .image-column {
-    order: 2; /* push image below text */
-  }
-
-  .text-column {
-    order: 1;
-  }
+.sidebar-blog-list {
+  list-style: none;
 }
-/* ================= FOOTER ================= */
-.site-footer {
+
+.sidebar-blog-list li {
+  margin-bottom: 1rem;
+}
+
+.sidebar-blog-list a {
+  text-decoration: none;
+  color: #081b24;
+}
+
+.sidebar-title {
+  font-weight: 700;
+}
+
+.sidebar-meta {
+  font-style: italic;
+  color: #6d5c45;
+}
+
+/* =========================================================
+   ✨ INSURANCE PAGE — STEP BY STEP EXPERIENCE DESIGN
+========================================================= */
+
+/* Intro soft explanation box */
+.insurance-intro {
+  background-color: #f5f1e6;
+  border-left: 4px solid #b0815c;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #081b24;
+}
+
+/* Flow container */
+.insurance-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Step cards */
+.insurance-step {
+  background-color: #ffffff;
+  border: 1px solid #e0d8cf;
+  border-radius: 14px;
+  padding: 1.5rem 1.5rem 1.5rem 3.5rem;
   position: relative;
+  box-shadow: 0 2px 10px rgba(8, 27, 36, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Top divider */
-.site-footer::before {
-  content: "";
+.insurance-step:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(8, 27, 36, 0.08);
+}
+
+/* Step number circle */
+.insurance-step::before {
+  content: attr(data-step);
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  max-width: 1000px;
-  height: 3px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(245, 241, 230, 0.4),
-    transparent
-  );
+  left: 1rem;
+  top: 1.5rem;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #b0815c;
+  color: #fefcf7;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
 }
 
+/* Step titles */
+.insurance-step h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #081b24;
+}
+
+/* Step text */
+.insurance-step p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #2c3e47;
+  margin-bottom: 0.75rem;
+}
+
+/* Step lists */
+.insurance-step ul {
+  margin-left: 1.25rem;
+}
+
+.insurance-step li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #2c3e47;
+}
+
+/* Note box (supportive closing tone) */
+.insurance-note {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: #081b24;
+  color: #fefcf7;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.insurance-note strong {
+  color: #f5f1e6;
+}
+
+/* ================= TABLE ================= */
+.insurance-table {
+  margin-top: 1.5rem;
+  overflow-x: auto;
+}
+
+.insurance-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fefcf7;
+  border: 1px solid #e0d8cf;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(8, 27, 36, 0.05);
+}
+
+.insurance-table th,
+.insurance-table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+.insurance-table th {
+  background-color: #081b24;
+  color: #fefcf7;
+  font-weight: 500;
+}
+
+.insurance-table tr {
+  border-bottom: 1px solid #e0d8cf;
+  transition: background-color 0.2s ease;
+}
+
+.insurance-table tr:hover {
+  background-color: #f5f1e6;
+}
+
+.insurance-table tr:last-child {
+  border-bottom: none;
+}
+
+.insurance-table td {
+  font-size: 1rem;
+  color: #2c3e47;
+}
+
+/* ================= BADGES ================= */
+.badge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.badge-yes {
+  background-color: #e6f4ea;
+  color: #2d6a4f;
+}
+
+.badge-maybe {
+  background-color: #fdf3d6;
+  color: #8a6d3b;
+}
+
+.badge-no {
+  background-color: #fbe4e6;
+  color: #7a1c1c;
+}
+
+/* ================= FOOTER (UNCHANGED) ================= */
 
 .site-footer {
   background-color: #081b24;
   color: #fdf6e3; 
   font-family: 'Roxborough', serif;
-  font-size: 1rem; 
+  font-size: .70rem; 
   padding: 4rem 2rem 2rem 2rem;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
@@ -505,7 +875,13 @@ h1, h2, h3, .brand {
   max-width: 1200px;
   margin: 0 auto;
   gap: 2rem;
-  flex-wrap: wrap;
+}
+
+/* make all columns equal width */
+.footer-left,
+.footer-center,
+.footer-right {
+  flex: 1;
 }
 
 /* LEFT COLUMN */
@@ -520,20 +896,21 @@ h1, h2, h3, .brand {
 
 .footer-left h3,
 .footer-left p {
-  margin: 0;
-  line-height: 1.4;
-  max-width: 38ch;
+  font-size: 0.70rem !important;
+  line-height: 1.5;
+    max-width: 38ch;
+    margin: 0 auto;
+
 }
 
 /* CENTER COLUMN */
 .footer-center {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
 }
-
 .footer-center img {
   height: 100px;
   width: auto;
@@ -670,4 +1047,860 @@ h1, h2, h3, .brand {
     margin-top: 1rem;
   }
 }
+/* ================= SIDEBAR CTA ================= */
 
+.sidebar-cta {
+  margin-bottom: 2rem;
+}
+
+.sidebar-cta h3 {
+  margin-bottom: 0.75rem;
+  border-left: 4px solid #b0815c;
+  padding-left: 0.5rem;
+}
+
+.sidebar-cta p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #2c3e47;
+  margin-bottom: 1rem;
+}
+
+/* CTA button */
+.sidebar-button {
+  display: inline-block;
+  background-color: #081b24;
+  color: #fefcf7;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+  transition: all 0.2s ease;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-button:hover {
+  background-color: #b0815c;
+  color: #fefcf7;
+  transform: translateY(-1px);
+}
+
+/* CTA note */
+.sidebar-cta-note {
+  display: block;
+  font-size: 0.85rem;
+  color: #6d5c45;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* Divider */
+.sidebar-divider {
+  height: 1px;
+  background-color: #e0d8cf;
+  margin: 1.5rem 0;
+}
+@media (max-width: 768px) {
+
+  .blog-layout {
+    grid-template-columns: 1fr; /* one column */
+  }
+
+  .blog-sidebar {
+    order: 2; /* pushes it below main content */
+    margin-top: 2rem;
+  }
+
+  .blog-main {
+    order: 1;
+  }
+
+}
+@media (max-width: 768px) {
+
+  .blog-sidebar .sidebar-inner {
+    position: static; /* remove sticky */
+    box-shadow: none;
+    border-radius: 12px;
+    border: 1px solid #e0d8cf;
+    background-color: #f5f1e6;
+  }
+
+}
+/* =========================================================
+   MY STORY PAGE
+   Uses Insurance / Blog page styling as the foundation
+   ========================================================= */
+
+
+/* Keep My Story as one generous content column */
+
+.story-page-layout {
+  grid-template-columns: 1fr;
+  max-width: 1150px;
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.story-intro {
+  background-color: #f5f1e6;
+
+  border-left: 4px solid #b0815c;
+  border-radius: 10px;
+
+  padding: 1.75rem 2rem;
+
+  color: #081b24;
+
+  box-shadow: 0 2px 10px rgba(8, 27, 36, 0.04);
+}
+
+
+.story-intro p {
+  margin: 0;
+
+  font-size: 1.2rem;
+  line-height: 1.8;
+
+  color: #2c3e47;
+}
+
+
+/* =========================================================
+   STORY SECTIONS
+   ========================================================= */
+
+.story-feature {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.2fr)
+    minmax(300px, 0.8fr);
+
+  gap: clamp(2.5rem, 5vw, 5rem);
+
+  align-items: center;
+
+  padding: 2rem 0;
+}
+
+
+/* Alternating layout */
+
+.story-feature-reverse {
+  grid-template-columns:
+    minmax(300px, 0.8fr)
+    minmax(0, 1.2fr);
+}
+
+
+/* =========================================================
+   COPY
+   ========================================================= */
+
+.story-copy {
+  min-width: 0;
+}
+
+
+.story-copy h2 {
+  font-family: 'Roxborough', Georgia, serif;
+
+  font-size: clamp(1.8rem, 3vw, 2.25rem);
+
+  color: #081b24;
+
+  border-left: 5px solid #b0815c;
+
+  padding-left: 1rem;
+
+  margin:
+    0
+    0
+    1.25rem;
+}
+
+
+/* More space when another section heading
+   appears inside the same text column */
+
+.story-copy p + h2,
+.story-quote + h2 {
+  margin-top: 3rem;
+}
+
+
+.story-copy p {
+  font-size: 1.125rem;
+
+  line-height: 1.75;
+
+  color: #2c3e47;
+
+  margin-bottom: 1.25rem;
+}
+
+
+/* =========================================================
+   IMAGES
+   ========================================================= */
+
+.story-image {
+  position: relative;
+
+  width: 100%;
+}
+
+
+.story-image img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  max-height: 600px;
+
+  object-fit: cover;
+
+  border-radius: 14px;
+
+  border: 1px solid #e0d8cf;
+
+  box-shadow:
+    0 8px 24px
+    rgba(8, 27, 36, 0.08);
+}
+
+
+/* Subtle bronze detail behind image */
+
+.story-image::before {
+  content: "";
+
+  position: absolute;
+
+  width: 75%;
+  height: 75%;
+
+  right: -12px;
+  bottom: -12px;
+
+  background-color: #b0815c;
+
+  border-radius: 14px;
+
+  opacity: 0.13;
+
+  z-index: -1;
+}
+
+
+/* =========================================================
+   QUOTE
+   ========================================================= */
+
+.story-quote {
+  margin: 2.25rem 0;
+
+  padding: 1.75rem 2rem;
+
+  background-color: #081b24;
+
+  border-radius: 12px;
+
+  color: #fefcf7;
+
+  font-family: 'Roxborough', Georgia, serif;
+  font-size: 1.25rem;
+  font-style: italic;
+
+  line-height: 1.6;
+
+  box-shadow:
+    0 4px 16px
+    rgba(8, 27, 36, 0.08);
+}
+
+
+/* =========================================================
+   SECTION DIVIDERS
+   ========================================================= */
+
+.story-page-layout .blog-section {
+  padding-bottom: 3rem;
+
+  margin-bottom: 3rem;
+
+  border-bottom:
+    1px solid
+    rgba(8, 27, 36, 0.12);
+}
+
+
+.story-page-layout .blog-section:last-child {
+  border-bottom: none;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .story-page-layout {
+    display: block;
+  }
+
+
+  .story-feature,
+  .story-feature-reverse {
+    grid-template-columns: 1fr;
+
+    gap: 2rem;
+
+    padding: 1rem 0;
+  }
+
+
+  /*
+     Text first on smaller screens,
+     regardless of desktop image placement.
+  */
+
+  .story-feature-reverse .story-copy {
+    order: 1;
+  }
+
+  .story-feature-reverse .story-image {
+    order: 2;
+  }
+
+
+  .story-image {
+    max-width: 650px;
+
+    margin: 0 auto;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .story-page-layout {
+    margin-top: 2.5rem;
+  }
+
+
+  .story-intro {
+    padding: 1.4rem;
+  }
+
+
+  .story-intro p {
+    font-size: 1.05rem;
+  }
+
+
+  .story-copy h2 {
+    font-size: 1.7rem;
+
+    padding-left: 0.85rem;
+  }
+
+
+  .story-copy p {
+    font-size: 1.05rem;
+
+    line-height: 1.7;
+  }
+
+
+  .story-quote {
+    padding: 1.5rem;
+
+    font-size: 1.1rem;
+  }
+
+
+  .story-page-layout .blog-section {
+    padding-bottom: 2rem;
+
+    margin-bottom: 2.5rem;
+  }
+
+
+  .story-image::before {
+    right: -7px;
+    bottom: -7px;
+  }
+
+}
+/* =========================================================
+   MY STORY HERO
+   ========================================================= */
+
+.story-hero {
+  display: grid;
+  grid-template-columns: 45% 55%;
+
+  width: 100%;
+  min-height: 650px;
+
+  background-color: #f5f1e6;
+
+  /*
+    Your navigation is fixed, so this prevents
+    the top of the portrait from sitting underneath it.
+  */
+  margin-top: 80px;
+}
+
+
+/* =========================================================
+   LEFT PORTRAIT
+   ========================================================= */
+
+.story-hero-image {
+  position: relative;
+
+  width: 100%;
+  height: 650px;
+
+  overflow: hidden;
+
+  background-color: #dcd1c3;
+}
+
+
+/*
+  IMPORTANT:
+  The image fills the WIDTH but keeps its natural proportions.
+
+  Because the portrait is tall, it will extend below the
+  650px container and the BOTTOM will be cropped.
+
+  The top of the original photo stays intact.
+*/
+
+.story-hero-image img {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: auto;
+
+  max-width: none;
+
+  display: block;
+
+  object-fit: unset;
+  object-position: unset;
+}
+
+
+/* =========================================================
+   BRONZE ACCENT
+   ========================================================= */
+
+.story-image-accent {
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+
+  width: 16px;
+  height: 34%;
+
+  background-color: #ad7c59;
+
+  z-index: 3;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .story-hero {
+    grid-template-columns: 45% 55%;
+
+    min-height: 600px;
+  }
+
+
+  .story-hero-image {
+    height: 600px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+  .story-hero {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 0;
+
+    margin-top: 70px;
+  }
+
+
+  .story-hero-image {
+    width: 100%;
+    height: 560px;
+  }
+
+
+  .story-hero-image img {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: auto;
+  }
+
+
+  /* Bronze accent becomes horizontal */
+
+  .story-image-accent {
+    left: 0;
+    right: auto;
+    bottom: 0;
+
+    width: 32%;
+    height: 5px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 430px) {
+
+  .story-hero-image {
+    height: 500px;
+  }
+
+}
+
+
+/* =========================================================
+   RIGHT CONTENT
+   ========================================================= */
+
+.story-hero-content {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  padding:
+    8rem
+    clamp(3rem, 6vw, 7rem);
+
+  background-color: #f5f1e6;
+}
+
+
+.story-hero-inner {
+  width: 100%;
+
+  max-width: 620px;
+}
+
+
+/* =========================================================
+   SMALL LABEL
+   ========================================================= */
+
+.story-eyebrow {
+  display: block;
+
+  margin-bottom: 1.25rem;
+
+  font-family: Georgia, serif;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+
+  color: #ad7c59;
+}
+
+
+/* =========================================================
+   MAIN TITLE
+   ========================================================= */
+
+.story-hero h1 {
+  margin: 0;
+
+  font-family: 'Roxborough', Georgia, serif;
+
+  font-size: clamp(4rem, 7vw, 7rem);
+
+  font-weight: 400;
+
+  line-height: 0.95;
+
+  color: #081b24;
+}
+
+
+/* Bronze detail under title */
+
+.story-title-line {
+  width: 65px;
+  height: 2px;
+
+  margin: 2rem 0 2.5rem;
+
+  background-color: #ad7c59;
+}
+
+
+/* =========================================================
+   INTRO TEXT
+   ========================================================= */
+
+.story-intro-text {
+  margin: 0;
+
+  max-width: 580px;
+
+  font-family: Georgia, serif;
+
+  font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+
+  line-height: 1.8;
+
+  color: #2c3e47;
+}
+
+
+.story-intro-text strong {
+  color: #081b24;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   SUBTLE BACKGROUND DETAIL
+   ========================================================= */
+
+.story-hero-content::after {
+  content: "";
+
+  position: absolute;
+
+  right: -120px;
+  bottom: -160px;
+
+  width: 360px;
+  height: 360px;
+
+  border: 1px solid rgba(173, 124, 89, 0.18);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .story-hero {
+    grid-template-columns: 45% 55%;
+
+    min-height: 650px;
+  }
+
+
+  .story-hero-image {
+    min-height: 650px;
+  }
+
+
+  .story-hero-content {
+    padding:
+      6rem
+      3rem;
+  }
+
+
+  .story-hero h1 {
+    font-size: clamp(3.5rem, 7vw, 5rem);
+  }
+
+
+  .story-intro-text {
+    font-size: 1.05rem;
+
+    line-height: 1.7;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+  .story-hero {
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: 0;
+  }
+
+
+  /* Portrait first */
+
+  .story-hero-image {
+    width: 100%;
+
+    height: 68vh;
+    min-height: 480px;
+    max-height: 700px;
+  }
+
+
+  .story-hero-image img {
+    object-position: center 22%;
+  }
+
+
+  /*
+    Accent becomes horizontal instead
+    of vertical on mobile.
+  */
+
+  .story-image-accent {
+    right: auto;
+    left: 0;
+    bottom: 0;
+
+    width: 32%;
+    height: 5px;
+  }
+
+
+  /* Text underneath */
+
+  .story-hero-content {
+    padding:
+      4rem
+      1.75rem
+      4.5rem;
+  }
+
+
+  .story-hero-inner {
+    max-width: 600px;
+
+    margin: 0 auto;
+  }
+
+
+  .story-eyebrow {
+    font-size: 0.75rem;
+
+    margin-bottom: 1rem;
+  }
+
+
+  .story-hero h1 {
+    font-size: clamp(3.4rem, 16vw, 5rem);
+  }
+
+
+  .story-title-line {
+    margin:
+      1.5rem
+      0
+      2rem;
+  }
+
+
+  .story-intro-text {
+    font-size: 1.05rem;
+
+    line-height: 1.75;
+  }
+
+
+  .story-hero-content::after {
+    width: 250px;
+    height: 250px;
+
+    right: -130px;
+    bottom: -110px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 430px) {
+
+  .story-hero-image {
+    height: 60vh;
+
+    min-height: 430px;
+  }
+
+
+  .story-hero-content {
+    padding:
+      3.5rem
+      1.4rem
+      4rem;
+  }
+
+
+  .story-hero h1 {
+    font-size: 3.6rem;
+  }
+
+}
