@@ -216,11 +216,14 @@ h1, h2, h3, .brand {
   justify-content: center;
 }
 
-/* OVERRIDE */
-.blog-hero.insurance-hero {
-  background: url('img/insurance.jpg') center/cover no-repeat;
+/* REMOVE GAP BETWEEN SECTIONS */
+.blog-hero {
+  margin-bottom: 0 !important;
 }
 
+.blog-hero + section {
+  margin-top: 0 !important;
+}
 .blog-hero {
   width: 100%;
   height: 75vh;

@@ -633,7 +633,7 @@ button {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background: var(--cream);
+  background: #dcd1c3;
 }
 
 #services .services-layout {
@@ -1323,7 +1323,7 @@ button {
 .about-editorial {
   position: relative;
   overflow: hidden;
-  background: #f7f5ef;
+  background: #dcd1c3;
   padding: clamp(7rem, 10vw, 12rem) 2.5rem;
   padding-top: 4rem;
 }
@@ -1899,6 +1899,8 @@ button {
 .waitlist-hero img {
   object-fit: cover;
   pointer-events: none;
+  transform: scale(1.2);
+  will-change: transform;
 }
 
 .waitlist-container {

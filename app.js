@@ -100,4 +100,17 @@ accordionItems.forEach(item => {
     item.classList.toggle('active');
   });
 });
+window.addEventListener("scroll", () => {
+  const sections = document.querySelectorAll(".waitlist-section");
+
+  sections.forEach(section => {
+    const image = section.querySelector(".waitlist-hero img");
+    const rect = section.getBoundingClientRect();
+
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      const movement = rect.top * -0.45;
+      image.style.transform = `translateY(${movement}px) scale(1.2)`;
+    }
+  });
+});
 
