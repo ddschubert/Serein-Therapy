@@ -440,27 +440,138 @@
   </div>
   </section>
 
-  <!-- About Me Section -->
-  <section id="about" class="about-section reveal">
-    <div class="about-container">
-      <div class="about-image-wrapper reveal delay-1">
-        <div class="shape shape-one"></div>
-        <div class="shape shape-two"></div>
-        <img src="./img/dore.jpeg" alt="Photo of Doré" class="about-image">
-      </div>
-      <div class="about-content reveal delay-2">
-        <h2 class="about-title">A little about me</h2>
-        <p class="reveal delay-2">
-          I’m Doré Schubert, founder of Serein Therapy, a virtual practice dedicated to supporting people navigating complex life transitions. I am a Canadian Certified Counsellor (CCC) and graduated with a Master's of Arts in Counselling Psychology (honours). I built this practice to create a space where therapy feels safe, validating, and practical because you deserve more than generic advice or “one-size-fits-all” solutions.
-          <br /><br />
-           My approach is flexible and person-centered, meaning I meet you where you are, adapt to your goals, and give you tools that actually help you navigate pain, stress, or life changes. I focus on buliding a trusting relationship where you feel safe to be vulnerable and heard.
-          <br /><br />
-          I specialize in supporting people with chronic illness, intellectual disability, and major life transitions, including those adjusting to new diagnoses or living with long-term pain. If you’re looking for a therapist who understands what it’s like to manage life and health simultaneously, who validates your experience, helps you notice patterns, and grow in a meaningful way, you’re in the right place.
-        </p>
-        <a href="mystory.html" class="about-cta reveal delay-3">Read my story</a>
-      </div>
+  <!-- CLIENT EXPERIENCE / TESTIMONIALS SECTION -->
+<section id="client-experience">
+
+  <div class="reviews-container">
+
+    <div class="reviews-heading">
+      <span class="reviews-eyebrow">Words from the therapy room</span>
+
+      <h2>How clients describe their experience at Serein Therapy</h2>
+
+      <p>
+        Everyone's experience is different. Here are a few words that reflect
+        what a supportive, understanding space can feel like.
+      </p>
     </div>
-  </section>
+
+    <div class="reviews-stack" aria-label="Client testimonials">
+
+      <!-- REVIEW 1 -->
+      <article class="review-card review-front">
+        <span class="review-quote-mark">“</span>
+        <p class="review-text">
+        I finally feel like someone understands the emotional weight of living with chronic illness.
+        </p>
+        <span class="review-author">Client testimonial</span>
+      </article>
+
+      <!-- REVIEW 2 -->
+      <article class="review-card review-middle">
+        <span class="review-quote-mark">“</span>
+        <p class="review-text">
+       I don't have to prove how much I'm struggling here. That alone has been life-changing.
+        </p>
+        <span class="review-author">Client testimonial</span>
+      </article>
+
+      <!-- REVIEW 3 -->
+      <article class="review-card review-back">
+        <span class="review-quote-mark">“</span>
+        <p class="review-text">
+        I feel seen as a whole person, not just a collection of symptoms.
+        </p>
+        <span class="review-author">Client testimonial</span>
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+ <!-- ABOUT ME SECTION -->
+<section id="about" class="about-editorial">
+
+  <div class="about-editorial-container">
+
+    <!-- LEFT: TYPOGRAPHY AND INTRODUCTION -->
+    <div class="about-editorial-content">
+
+      <span class="about-eyebrow">GET TO KNOW ME</span>
+
+      <h2 class="about-editorial-title">
+        Hello,<br>
+        <span>I'm Doré.</span>
+      </h2>
+
+      <div class="about-accent-line"></div>
+
+      <p class="about-intro">
+        I'm the founder of Serein Therapy, a virtual practice dedicated
+        to supporting people navigating complex life transitions.
+      </p>
+
+      <div class="about-body">
+
+        <p>
+          I am a Canadian Certified Counsellor (CCC) and graduated with
+          a Master's of Arts in Counselling Psychology (honours).
+          I built this practice to create a space where therapy feels
+          safe, validating, and practical because you deserve more than
+          generic advice or "one-size-fits-all" solutions.
+        </p>
+
+        <p>
+          My approach is flexible and person-centered, meaning I meet
+          you where you are, adapt to your goals, and give you tools
+          that actually help you navigate pain, stress, or life changes.
+          I focus on building a trusting relationship where you feel
+          safe to be vulnerable and heard.
+        </p>
+
+        <p>
+          I specialize in supporting people with chronic illness,
+          intellectual disability, and major life transitions, including
+          those adjusting to new diagnoses or living with long-term pain.
+          If you're looking for a therapist who understands what it's
+          like to manage life and health simultaneously, who validates
+          your experience, helps you notice patterns, and grow in a
+          meaningful way, you're in the right place.
+        </p>
+
+      </div>
+
+      <a href="mystory.html" class="about-editorial-cta">
+        Read my story <span aria-hidden="true">↗</span>
+      </a>
+
+    </div>
+
+
+    <!-- RIGHT: LARGE PHOTOGRAPH -->
+    <div class="about-editorial-visual">
+
+      <div class="about-photo-frame">
+        <img
+          src="./img/dore.jpeg"
+          alt="Doré Schubert, founder of Serein Therapy"
+          class="about-editorial-image"
+        >
+      </div>
+
+      <div class="about-photo-caption">
+        <span>01 / A LITTLE ABOUT ME</span>
+        <span>Serein Therapy</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+ 
 
   <!-- Banner Section -->
   <section class="moving-banner">
@@ -635,6 +746,119 @@
 </footer>
 
   <script src="./app.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const stack = document.querySelector(".reviews-stack");
+
+  if (!stack) return;
+
+  const cards = Array.from(stack.querySelectorAll(".review-card"));
+
+  if (cards.length < 2) return;
+
+  let currentIndex = 0;
+  let rotationInterval;
+  let isPaused = false;
+
+  function updateCards() {
+
+    cards.forEach((card, index) => {
+
+      card.classList.remove(
+        "review-front",
+        "review-middle",
+        "review-back"
+      );
+
+      const position = (index - currentIndex + cards.length) % cards.length;
+
+      if (position === 0) {
+        card.classList.add("review-front");
+      } else if (position === 1) {
+        card.classList.add("review-middle");
+      } else {
+        card.classList.add("review-back");
+      }
+
+    });
+
+  }
+
+  function rotateCards() {
+
+    if (isPaused || document.hidden) return;
+
+    currentIndex = (currentIndex + 1) % cards.length;
+
+    updateCards();
+
+  }
+
+  function startRotation() {
+    clearInterval(rotationInterval);
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      rotationInterval = setInterval(rotateCards, 3000);
+    }
+  }
+
+  stack.addEventListener("mouseenter", function () {
+    isPaused = true;
+  });
+
+  stack.addEventListener("mouseleave", function () {
+    isPaused = false;
+  });
+
+  stack.addEventListener("focusin", function () {
+    isPaused = true;
+  });
+
+  stack.addEventListener("focusout", function () {
+    isPaused = false;
+  });
+
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden) {
+      updateCards();
+    }
+  });
+
+  updateCards();
+  startRotation();
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const aboutSection = document.querySelector(".about-editorial");
+  const aboutVisual = document.querySelector(".about-editorial-visual");
+
+  if (!aboutSection) return;
+
+  const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+        aboutSection.classList.add("is-visible");
+        aboutVisual.classList.add("is-visible");
+
+        observer.unobserve(aboutSection);
+      }
+
+    });
+
+  }, {
+    threshold: 0.15
+  });
+
+  observer.observe(aboutSection);
+
+});
+</script>
 </body>
 
 </html>

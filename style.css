@@ -1317,100 +1317,559 @@ button {
 
 }
 /* =========================================================
-   ABOUT
+   ABOUT SECTION
    ========================================================= */
-.about-section {
-  padding: clamp(6rem, 8vw, 9rem) 2rem;
+
+.about-editorial {
+  position: relative;
   overflow: hidden;
   background: #f7f5ef;
+  padding: clamp(7rem, 10vw, 12rem) 2.5rem;
 }
 
-.about-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: clamp(4rem, 6vw, 7rem);
-  max-width: var(--max-width);
+.about-editorial-container {
+  max-width: 1400px;
   margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: clamp(5rem, 8vw, 11rem);
 }
 
-.about-image-wrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
+
+/* =========================================================
+   LEFT SIDE: TYPOGRAPHY
+   ========================================================= */
+
+.about-editorial-content {
+  max-width: 650px;
 }
 
-.about-image {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 420px;
-  border-radius: var(--radius-lg);
+.about-eyebrow {
+  display: block;
+  margin-bottom: 2.5rem;
+
+  font-size: 1.2rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  color: #a17d6c;
+  font-weight: 500;
 }
 
-.shape {
-  position: absolute;
-  z-index: 1;
-  border-radius: 50%;
-}
-
-.shape-one {
-  top: -30px;
-  left: -40px;
-  width: 180px;
-  height: 180px;
-  background: #e6e2d3;
-}
-
-.shape-two {
-  right: -30px;
-  bottom: -20px;
-  width: 140px;
-  height: 140px;
-  background: #cfd6d1;
-}
-
-.about-section.is-visible .shape {
-  animation: float 6s ease-in-out infinite;
-}
-
-.about-section.is-visible .shape-two {
-  animation-delay: 2s;
-}
-
-.about-content h2 {
-  margin-bottom: 1.5rem;
+.about-editorial-title {
+  margin: 0;
   color: var(--ink);
-  font-size: clamp(3.4rem, 4vw, 4.8rem);
+
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(6rem, 8.5vw, 11rem);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+}
+
+.about-editorial-title span {
+  color: #a17d6c;
+  font-style: italic;
+}
+
+.about-accent-line {
+  width: 65px;
+  height: 1px;
+  background: #a17d6c;
+  margin: 3.5rem 0 2.5rem;
+}
+
+
+/* INTRODUCTION */
+
+.about-intro {
+  max-width: 540px;
+  margin-bottom: 2.5rem;
+
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 2.5vw, 3.1rem);
+  line-height: 1.35;
+}
+
+
+/* BODY TEXT */
+
+.about-body {
+  max-width: 550px;
+}
+
+.about-body p {
+  margin-bottom: 1.8rem;
+
+  color: var(--ink);
+  font-size: 1.55rem;
+  line-height: 1.85;
   font-weight: 400;
 }
 
-.about-content p {
-  margin-bottom: 1.5rem;
-  color: var(--ink);
-  font-size: clamp(1.6rem, 1.5vw, 1.9rem);
-  line-height: 1.75;
-}
 
-.about-cta {
+/* STORY LINK */
+
+.about-editorial-cta {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  margin-top: 1rem;
-  padding: 1.1rem 2.4rem;
-  border-radius: var(--pill);
-  background: var(--ink);
-  color: #fff;
-  font-size: 1.6rem;
+  gap: 1.2rem;
+
+  margin-top: 1.5rem;
+  padding-bottom: 0.7rem;
+
+  color: var(--ink);
+  font-size: 1.5rem;
   font-weight: 500;
-  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+
+  border-bottom: 1px solid #a17d6c;
+
+  transition: gap 0.3s ease, color 0.3s ease;
 }
 
-.about-cta:hover {
-  transform: translateY(-2px);
-  background: #2f4f4f;
-  box-shadow: var(--shadow-sm);
+.about-editorial-cta span {
+  font-size: 1.8rem;
+  transition: transform 0.3s ease;
 }
+
+.about-editorial-cta:hover {
+  gap: 1.8rem;
+  color: #a17d6c;
+}
+
+.about-editorial-cta:hover span {
+  transform: translate(3px, -3px);
+}
+
+
+/* =========================================================
+   RIGHT SIDE: PHOTOGRAPH
+   ========================================================= */
+
+.about-editorial-visual {
+  position: relative;
+  width: 100%;
+}
+
+.about-photo-frame {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+
+  overflow: hidden;
+  background: #e6e2d3;
+}
+
+.about-editorial-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 20px;
+
+  transform: scale(1.04);
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-editorial-visual.is-visible .about-editorial-image {
+  transform: scale(1);
+}
+
+
+/* IMAGE CAPTION */
+
+.about-photo-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 600px;
+  margin: 1.5rem 0 0 auto;
+
+  color: #93877b;
+  font-size: 1.1rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   SCROLL ANIMATION
+   ========================================================= */
+
+.about-editorial-content,
+.about-editorial-visual {
+  opacity: 0;
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-editorial-content {
+  transform: translateY(35px);
+}
+
+.about-editorial-visual {
+  transform: translateY(55px);
+}
+
+.about-editorial.is-visible .about-editorial-content,
+.about-editorial-visual.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-editorial.is-visible .about-editorial-visual {
+  transition-delay: 0.2s;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media screen and (max-width: 950px) {
+
+  .about-editorial-container {
+    grid-template-columns: 1fr 0.9fr;
+    gap: 4rem;
+  }
+
+  .about-editorial-title {
+    font-size: clamp(6rem, 9vw, 8rem);
+  }
+
+  .about-intro {
+    font-size: 2.5rem;
+  }
+
+  .about-body p {
+    font-size: 1.45rem;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 700px) {
+
+  .about-editorial {
+    padding: 7rem 2rem;
+  }
+
+  .about-editorial-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .about-editorial-content {
+    max-width: 100%;
+  }
+
+  .about-eyebrow {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .about-editorial-title {
+    font-size: clamp(6.5rem, 16vw, 9rem);
+  }
+
+  .about-accent-line {
+    margin: 2.5rem 0 2rem;
+  }
+
+  .about-intro {
+    font-size: 2.5rem;
+  }
+
+  .about-body p {
+    font-size: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .about-editorial-visual {
+    width: 100%;
+  }
+
+  .about-photo-frame {
+    max-width: 100%;
+  }
+
+  .about-editorial-image {
+    aspect-ratio: 4 / 5;
+  }
+
+  .about-photo-caption {
+    font-size: 0.9rem;
+  }
+
+}
+
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .about-editorial-content,
+  .about-editorial-visual,
+  .about-editorial-image {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+}
+
+/* =========================
+   CLIENT EXPERIENCE SECTION
+========================= */
+
+#client-experience {
+  background: #f7f5f0;
+  padding: 50px 25px 50px;
+  overflow: hidden;
+}
+
+.reviews-container {
+  max-width: 1050px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.reviews-heading {
+  max-width: 700px;
+  margin: 0 auto 55px;
+}
+
+.reviews-eyebrow {
+  display: block;
+  color: #a87968;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.reviews-heading h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 5vw, 48px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: #45423e;
+  margin-bottom: 18px;
+}
+
+.reviews-heading p {
+  color: #77716b;
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* STACK AREA */
+
+.reviews-stack {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  height: 290px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+/* INDIVIDUAL CARDS */
+
+.review-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 82%;
+  min-height: 245px;
+  padding: 42px 55px 35px;
+  background: #fffefa;
+  border: 1px solid #e8e1d9;
+  border-radius: 5px;
+  box-shadow: 0 12px 35px rgba(65, 55, 45, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform 0.8s ease,
+    opacity 0.8s ease,
+    box-shadow 0.8s ease;
+
+  transform-origin: center center;
+}
+
+.review-quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 65px;
+  line-height: 0.7;
+  color: #b88673;
+  margin-bottom: 15px;
+}
+
+.review-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 23px;
+  font-style: italic;
+  line-height: 1.45;
+  color: #514b45;
+  margin: 0 0 22px;
+}
+
+.review-author {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #a87968;
+}
+
+/* CARD POSITIONS */
+
+.review-front {
+  z-index: 3;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+  box-shadow: 0 15px 40px rgba(65, 55, 45, 0.12);
+}
+
+.review-middle {
+  z-index: 2;
+  opacity: 0.7;
+  transform: translateX(-48%) translateY(13px) scale(0.96);
+}
+
+.review-back {
+  z-index: 1;
+  opacity: 0.4;
+  transform: translateX(-46%) translateY(26px) scale(0.92);
+}
+
+/* BOTTOM TEXT */
+
+.reviews-caption {
+  margin-top: 25px;
+  color: #9b8173;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-style: italic;
+}
+
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+
+@media screen and (max-width: 768px) {
+
+  #client-experience {
+    padding: 75px 18px 85px;
+  }
+
+  .reviews-heading {
+    margin-bottom: 40px;
+  }
+
+  .reviews-heading h2 {
+    font-size: 36px;
+  }
+
+  .reviews-heading p {
+    font-size: 14px;
+    padding: 0 5px;
+  }
+
+  .reviews-stack {
+    height: 310px;
+    max-width: 100%;
+  }
+
+  .review-card {
+    width: 90%;
+    min-height: 250px;
+    padding: 35px 25px 30px;
+  }
+
+  .review-text {
+    font-size: 21px;
+  }
+
+  .review-quote-mark {
+    font-size: 55px;
+  }
+
+  .reviews-caption {
+    font-size: 17px;
+    margin-top: 15px;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+
+  .reviews-heading h2 {
+    font-size: 32px;
+  }
+
+  .review-card {
+    width: 94%;
+    padding: 30px 20px;
+  }
+
+  .review-text {
+    font-size: 19px;
+  }
+
+}
+/* DIFFERENT TESTIMONIAL BACKGROUNDS */
+
+/* Soft sage */
+.review-card:nth-child(1) {
+  background: #e7ebe3;
+  border-color: #d9dfd3;
+}
+
+/* Warm blush */
+.review-card:nth-child(2) {
+  background: #f1e5df;
+  border-color: #e8d8d0;
+}
+
+/* Muted sand */
+.review-card:nth-child(3) {
+  background: #eee9df;
+  border-color: #e3dccf;
+}
+
+/* Keep text colours consistent across all cards */
+.review-text {
+  color: #514b45;
+}
+
+.review-quote-mark {
+  color: #a87968;
+}
+
+.review-author {
+  color: #987361;
+}
+
 
 /* =========================================================
    QUESTION / CONTACT FORM

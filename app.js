@@ -100,3 +100,4 @@ accordionItems.forEach(item => {
     item.classList.toggle('active');
   });
 });
+
