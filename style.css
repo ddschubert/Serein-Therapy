@@ -1325,6 +1325,7 @@ button {
   overflow: hidden;
   background: #f7f5ef;
   padding: clamp(7rem, 10vw, 12rem) 2.5rem;
+  padding-top: 4rem;
 }
 
 .about-editorial-container {
@@ -1462,7 +1463,7 @@ button {
   margin-left: auto;
 
   overflow: hidden;
-  background: #e6e2d3;
+ 
 }
 
 .about-editorial-image {
@@ -1471,7 +1472,8 @@ button {
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center;
-  border-radius: 20px;
+  border-radius: 30px;
+  background: #f7f5ef;
 
   transform: scale(1.04);
   transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1516,13 +1518,17 @@ button {
 }
 
 .about-editorial-visual {
-  transform: translateY(55px);
+  transform: translateX(70px);
+  opacity: 0;
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .about-editorial.is-visible .about-editorial-content,
 .about-editorial-visual.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 .about-editorial.is-visible .about-editorial-visual {
