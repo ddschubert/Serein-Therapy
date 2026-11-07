@@ -216,14 +216,7 @@ h1, h2, h3, .brand {
   justify-content: center;
 }
 
-/* REMOVE GAP BETWEEN SECTIONS */
-.blog-hero {
-  margin-bottom: 0 !important;
-}
 
-.blog-hero + section {
-  margin-top: 0 !important;
-}
 .blog-hero {
   width: 100%;
   height: 75vh;
